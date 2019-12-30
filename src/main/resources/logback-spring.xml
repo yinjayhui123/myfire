@@ -28,7 +28,7 @@
     </springProfile>
 
 
-    <springProfile name="ceshi">
+    <springProfile name="test">
         <logger name="org.springboot.sample" level="DEBUG" />
         <logger name="com.yh" level="info">
             <appender-ref ref="consoleAppender"/>

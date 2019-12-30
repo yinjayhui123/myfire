@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: ceshi
+    active: test
 #  datasource:
 #    url: jdbc:mysql://127.0.0.1:33306/config?useUnicode=true&characterEncoding=utf-8
 ##    url: jdbc:mysql://127.0.0.1:13301/test?useUnicode=true&characterEncoding=utf-8
