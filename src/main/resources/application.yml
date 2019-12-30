@@ -1,0 +1,129 @@
+spring:
+  profiles:
+    active: ceshi
+#  datasource:
+#    url: jdbc:mysql://127.0.0.1:33306/config?useUnicode=true&characterEncoding=utf-8
+##    url: jdbc:mysql://127.0.0.1:13301/test?useUnicode=true&characterEncoding=utf-8
+#    username: dbwrite
+#    password: aAR!Q23AUP!ogk$J
+#    driver-class-name: com.mysql.jdbc.Driver
+
+#多数据源 1主1从
+datasource:
+  #从库数量
+  readSize: 2
+  # 使用druid数据源
+  type: com.alibaba.druid.pool.DruidDataSource
+  #读库
+  read-config:
+    url: jdbc:mysql://127.0.0.1:33306/config?useUnicode=true&characterEncoding=utf-8
+    username: tomcat
+    password: aAR!Q23AUP!ogk$J
+    driver-class-name: com.mysql.jdbc.Driver
+    filters: stat
+    #最大连接池数量
+    maxActive: 100
+    #初始化大小
+    initialSize: 1
+    #最大连接时间
+    maxWait: 60000
+    #最小连接池数量
+    minIdle: 1
+    #配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    timeBetweenEvictionRunsMillis: 60000
+    #配置一个连接在池中最小生存的时间，单位是毫秒
+    minEvictableIdleTimeMillis: 300000
+    validationQueryTimeout: 900000
+    #验证连接有效与否的SQL，不同的数据配置不同
+    validationQuery: SELECT SYSDATE() from dual
+    #建议配置为true，不影响性能，并且保证安全性。申请连接的时候检测，如果空闲时间大于timeBetweenEvictionRunsMillis，执行validationQuery检测连接是否有效。
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: -1
+    #asyncInit是1.1.4中新增加的配置，如果有initialSize数量较多时，打开会加快应用启动时间
+    asyncInit: true
+
+  read-config2:
+    url: jdbc:mysql://127.0.0.1:33306/config?useUnicode=true&characterEncoding=utf-8
+    username: tomcat
+    password: aAR!Q23AUP!ogk$J
+    driver-class-name: com.mysql.jdbc.Driver
+    filters: stat
+    maxActive: 100
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQueryTimeout: 900000
+    validationQuery: SELECT SYSDATE() from dual
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: -1
+    #asyncInit是1.1.4中新增加的配置，如果有initialSize数量较多时，打开会加快应用启动时间
+    asyncInit: true
+  write-config:
+    url: jdbc:mysql://127.0.0.1:3302/config?useUnicode=true&characterEncoding=utf-8
+    username: user_m
+    password: aAR!Q23AUP!ogk$J
+    driver-class-name: com.mysql.jdbc.Driver
+    filters: stat
+    maxActive: 100
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQueryTimeout: 900000
+    validationQuery: SELECT SYSDATE() from dual
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: -1
+    #asyncInit是1.1.4中新增加的配置，如果有initialSize数量较多时，打开会加快应用启动时间
+    asyncInit: true
+
+mybatis:
+  mapper-locations: classpath*:com/yh/dao/xml/*.xml
+  localCacheScope: STATEMENT
+
+server:
+  port: 8082
+
+jetcache:
+  statIntervalMinutes: 15
+  areaInCacheName: false
+  local:
+    default:
+      type: linkedhashmap
+      keyConvertor: fastjson
+  remote:
+    default:
+      type: redis
+      keyConvertor: fastjson
+      valueEncoder: java
+      valueDecoder: java
+      poolConfig:
+        minIdle: 5
+        maxIdle: 20
+        maxTotal: 50
+      host: 47.105.37.247
+      port: 6379
+      password: RH06863b3e6
+
+# Redis
+redis:
+  ip: 127.0.0.1
+  port: 6379
+  pool:
+    maxActive:  1024
+    maxIdle: 200
+    maxWait: 10000
+    testOnBorrow: true
+    testOnReturn: true
+    password: 123456

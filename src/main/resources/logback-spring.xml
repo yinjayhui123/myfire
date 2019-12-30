@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- scan:当此属性设置为true时，配置文件如果发生改变，将会被重新加载，默认值为true-->
+<configuration scan="true" debug="true">
+    <contextName>logback</contextName>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <logger name="org.springframework.web" level="DEBUG"/>
+    <logger name="org.springframework.boot" level="DEBUG"/>
+
+    <!--输出到控制台-->
+    <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss} --- %contextName [%thread] %-5level %logger{36} : %msg%n</Pattern>
+        </encoder>
+        <!-- ThresholdFilter为系统定义的拦截器,拦截那种级别的不输入到控制台 -->
+        <!--<filter class="ch.qos.logback.classic.filter.ThresholdFilter">-->
+            <!--<level>info</level>-->
+        <!--</filter>-->
+    </appender>
+
+
+    <springProfile name="dev">
+        <logger name="org.springboot.sample" level="DEBUG" />
+        <logger name="com.yh" level="debug" additivity="false">
+            <appender-ref ref="consoleAppender"/>
+        </logger>
+
+    </springProfile>
+
+
+    <springProfile name="ceshi">
+        <logger name="org.springboot.sample" level="DEBUG" />
+        <logger name="com.yh" level="info">
+            <appender-ref ref="consoleAppender"/>
+        </logger>
+    </springProfile>
+
+
+    <!--<root level="debug">-->
+    <!--<appender-ref ref="consoleAppender" />-->
+    <!--</root>-->
+
+
+
+    <!--<logger name="org.springboot.sample" level="TRACE">-->
+        <!--<appender-ref ref="consoleAppender"/>-->
+    <!--</logger>-->
+
+</configuration>

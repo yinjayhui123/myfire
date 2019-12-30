@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yh.dao.WorkNameMapper">
+
+    <resultMap id="BaseResultMap" type="com.yh.bean.WorkName" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="work_name" property="workName" jdbcType="VARCHAR" />
+        <result column="charge_name" property="chargeName" jdbcType="VARCHAR" />
+        <result column="charge_mail" property="chargeMail" jdbcType="VARCHAR" />
+        <result column="status" property="status" jdbcType="TINYINT" />
+        <result column="create_user" property="createUser" jdbcType="VARCHAR" />
+        <result column="update_user" property="updateUser" jdbcType="VARCHAR" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, work_name, charge_name, charge_mail, `status`, create_user, update_user, create_time,
+        update_time
+    </sql>
+
+    <select id="getByIds" resultMap="BaseResultMap" parameterType="int">
+
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM ht_workname
+        WHERE id = #{id}
+    </select>
+
+    <update id="updateChargeName"  parameterType="java.util.Map">
+
+        update ht_workname set charge_name = #{chargename} where id = #{id}
+
+    </update>
+
+</mapper>
