@@ -5,8 +5,10 @@ package com.yh.controller;
 
 import com.yh.annotation.RequestLimit;
 import com.yh.annotation.SecureSign;
+import com.yh.bean.ActivityBean;
 import com.yh.bean.TestUser;
 import com.yh.bean.User;
+import com.yh.service.ActivityListService;
 import com.yh.service.UserService;
 import com.yh.util.IpConfiguration;
 import com.yh.util.SingletonBean;
@@ -34,6 +36,9 @@ public class HelloController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private ActivityListService activityListService;
 
     @Autowired
     private IpConfiguration ipConfiguration;
@@ -184,5 +189,11 @@ public class HelloController {
     @RequestMapping("/getUrlReqLimit")
     public String getUrlReqLimit(){
         return ipConfiguration.getUrl();
+    }
+
+    @RequestMapping("/activity")
+    public void activity(){
+        ActivityBean jifenBean = new ActivityBean(1,"积分活动",1579161627000L);
+        activityListService.assginActivity(jifenBean);
     }
 }

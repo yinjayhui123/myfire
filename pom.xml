@@ -83,12 +83,12 @@
 			<artifactId>spring-boot-starter-aop</artifactId>
 		</dependency>
 
-		<!-- rocketmq
+		<!-- rocketmq-->
 		<dependency>
 			<groupId>org.apache.rocketmq</groupId>
 			<artifactId>rocketmq-client</artifactId>
 			<version>4.3.0</version>
-		</dependency>-->
+		</dependency>
 
 		<!-- rocketmq启动器,加入spring boot启动，管理rocketmq消息。参考：https://github.com/apache/rocketmq-spring -->
 		<dependency>
@@ -123,6 +123,14 @@
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
 			<version>1.2.57</version>
+		</dependency>
+
+		<!-- 反射工具包 -->
+		<!-- 官方文档:https://github.com/ronmamo/reflections -->
+		<dependency>
+			<groupId>org.reflections</groupId>
+			<artifactId>reflections</artifactId>
+			<version>0.9.12</version>
 		</dependency>
 
 		<!-- JetCache 缓存 -->

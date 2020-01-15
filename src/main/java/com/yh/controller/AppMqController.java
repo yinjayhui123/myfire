@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.ArrayList;
 
@@ -24,7 +25,7 @@ import java.util.ArrayList;
  */
 @RestController
 @RequestMapping("/app")
-public class AppMqController {
+public class AppMqController  {
 
     private static final Logger logger = LoggerFactory.getLogger(AppMqController.class);
 
