@@ -145,6 +145,14 @@
 			<version>0.9.12</version>
 		</dependency>
 
+		<!-- log4j日志框架，不使用 -->
+		<!--<dependency>-->
+			<!--<groupId>org.slf4j</groupId>-->
+			<!--<artifactId>slf4j-log4j12</artifactId>-->
+			<!--<version>1.8.0-alpha2</version>-->
+		<!--</dependency>-->
+
+
 		<!-- JetCache 缓存 -->
 		<dependency>
 			<groupId>com.alicp.jetcache</groupId>
